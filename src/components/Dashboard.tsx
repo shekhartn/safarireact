@@ -4,7 +4,7 @@ import { User } from '../UserContaxt';
 
 const Dashboard = () => {
     const navigate = useNavigate();
-       const { user } = useContext(User);
+       const { username } = useContext(User);
     
     const handleProfileClick = () => {
         navigate('/profile');
@@ -12,7 +12,7 @@ const Dashboard = () => {
     return (
         
         <div>
-            {user && <h1>Welcome {user}</h1>}
+            {username && <h1>Welcome {username}</h1>}
             <button type='button' onClick={() => navigate('/login')}>Logout</button>
             <button onClick={handleProfileClick}>Profile</button>            {/* ...existing code... */}
         </div>

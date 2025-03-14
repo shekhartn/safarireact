@@ -1,18 +1,28 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User } from '../UserContaxt';
+import { User, UserType } from '../UserContaxt';
 
 const Registration = () => {
   const [username, setUsername] = useState('');
   const [age, setAge] = useState('');
   const [email, setEmail] = useState('');
   const [mobile, setMobile] = useState('');
-  const { setValidUsernames, validUsernames } = useContext(User);
+
+  const { user , setUser,setValidUsernames, validUsernames } = useContext(User);
 
   const navigate = useNavigate();
 
   const onRegister = () => {
+    const userObj = {
+      user: username,
+      age:parseInt(age,10),
+     email: email,
+      phoneNumber:parseInt(mobile,10)
+  };
     setValidUsernames([...validUsernames, username]);
+    setUser(userObj);
+    console.log('UserInfo', user)
+    console.log('UserObject', userObj)
     alert('Registration successful');
     navigate('/login');
   };
